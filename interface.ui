@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="2.24"/>
+  <!-- interface-naming-policy project-wide -->
+  <object class="GtkWindow" id="window1">
+    <property name="width_request">430</property>
+    <property name="height_request">260</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Chaosdots</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <property name="default_width">440</property>
+    <property name="default_height">240</property>
+    <child>
+      <object class="GtkFixed" id="fixed1">
+        <property name="width_request">430</property>
+        <property name="height_request">260</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkButton" id="send_button">
+            <property name="label" translatable="yes">Send</property>
+            <property name="width_request">405</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="x">12</property>
+            <property name="y">205</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFileChooserButton" id="filechoose">
+            <property name="width_request">406</property>
+            <property name="height_request">31</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="x">14</property>
+            <property name="y">6</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox1">
+            <property name="width_request">401</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkCheckButton" id="check_ani">
+                <property name="label" translatable="yes">Animated</property>
+                <property name="width_request">119</property>
+                <property name="height_request">32</property>
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="frame_delay">
+                <property name="width_request">196</property>
+                <property name="height_request">23</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">●</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="x">16</property>
+            <property name="y">43</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkProgressBar" id="progressbar1">
+            <property name="width_request">400</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="x">14</property>
+            <property name="y">243</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

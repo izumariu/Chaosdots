@@ -1,0 +1,20 @@
+find_executable: checking for convert... -------------------- yes
+
+--------------------
+
+find_executable: checking for pnminvert... -------------------- yes
+
+--------------------
+
+find_executable: checking for tail... -------------------- yes
+
+--------------------
+
+find_executable: checking for dd... -------------------- yes
+
+--------------------
+
+find_executable: checking for nc... -------------------- yes
+
+--------------------
+
