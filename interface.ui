@@ -47,7 +47,7 @@
         <child>
           <object class="GtkHBox" id="hbox1">
             <property name="width_request">401</property>
-            <property name="height_request">30</property>
+            <property name="height_request">73</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
@@ -68,8 +68,23 @@
               </packing>
             </child>
             <child>
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Delay
+between 
+frames(ms):</property>
+                <property name="justify">right</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkSpinButton" id="frame_delay">
-                <property name="width_request">196</property>
+                <property name="width_request">98</property>
                 <property name="height_request">23</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -78,11 +93,12 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="primary_icon_sensitive">True</property>
                 <property name="secondary_icon_sensitive">True</property>
+                <property name="numeric">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>

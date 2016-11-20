@@ -24,14 +24,11 @@ cb_gif_checked = false
 send_button = builder.get_object("send_button")
 cb = builder.get_object("check_ani")
 fd_spin = builder.get_object("frame_delay")
-=begin
 fd_spin.value = 300
-fd_spin.set_range(100,1000)
-fd_spin.climb_rate = 100.0
+fd_spin.set_range(100,3000)
 fd_spin.numeric = true
-fd_aj = Gtk::Adjustment.new(100, 100, 1000, 100, 1000)
-fd_spin.adjustment = fd_aj
-=end
+fd_spin.set_increments(50.0,100.0)
+fd_spin.sensitive = false
 
 send_button_enabled = false
 
