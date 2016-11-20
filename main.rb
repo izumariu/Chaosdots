@@ -24,13 +24,21 @@ cb_gif_checked = false
 send_button = builder.get_object("send_button")
 cb = builder.get_object("check_ani")
 fd_spin = builder.get_object("frame_delay")
-fd_spin.value = 300
 fd_spin.set_range(100,3000)
 fd_spin.numeric = true
 fd_spin.set_increments(50.0,100.0)
+fd_spin.value = 300.0
 fd_spin.sensitive = false
 
 send_button_enabled = false
+
+fd_spin.signal_connect("value-changed") {
+  if fd_spin.value%50!=0
+    until fd_spin.value%50==0
+      fd_spin.value-=1
+    end
+  end
+}
 
 validate_all = lambda{
   send_button_enabled = true
