@@ -32,6 +32,16 @@ fd_spin.sensitive = false
 
 send_button_enabled = false
 
+def sys_fatal(title,msg,buttons)
+  dismiss_dialog = Gtk::Dialog.new(:title=>title)
+  dismiss_dialog.child << Gtk::Label.new(msg)
+  buttons.each_with_index {|t,i|
+    dismiss_dialog.add_button(t,i)
+  }
+  dismiss_dialog.signal_connect("response") {dismiss_dialog.destroy}
+  dismiss_dialog.show_all
+end
+
 fd_spin.signal_connect("value-changed") {
   if fd_spin.value%50!=0
     until fd_spin.value%50==0
@@ -62,18 +72,44 @@ cb.signal_connect("toggled") {
   fd_spin.sensitive = cb.active?
 }
 
+execstr = <<EOC
+convert $1 -resize 144x120 -gravity center -background black -extent 144x120 -rotate 90 -negate output.pbm &&
+pnminvert output.pbm > output.inv.pbm &&
+tail -n +3 output.inv.pbm > output.bin &&
+dd if=output.bin skip=0 bs=720 count=1 2>/dev/null | nc -u -w 1 2001:67c:20a1:1095:ba27:ebff:feb9:db12 2323 &
+dd if=output.bin skip=1 bs=720 count=1 2>/dev/null | nc -u -w 1 2001:67c:20a1:1095:ba27:ebff:fe23:60d7 2323 &
+dd if=output.bin skip=2 bs=720 count=1 2>/dev/null | nc -u -w 1 2001:67c:20a1:1095:ba27:ebff:fe71:dd32 2323 &
+EOC
+
 send_button.signal_connect("clicked") {
   Dir.chdir("picedit/")
-  #TODO Prepare the sending of an image
-  if !cb.active? # check if picture is not flagged as animated
+  if !cb.active?
     # single picture
-    #fc.uri.to_s.split("file://")[-1]
-    #puts execstr
-    #system(execstr)
+    fname = fc.uri.to_s.split("file://")[-1]
     puts "MODE: single picture"
+    ec = (Open3.capture3(execstr.gsub("$1",fname)) rescue nil)
+
+    if ec[1]!=""||ec==nil
+      sys_fatal(
+          "Oops...",
+          "There was an error converting/sending the picture.\nPlease don't punish me.\nI'm sorry.",
+          ["I won't punish you"]
+      )
+    else
+      system("rm output.*")
+    end
+
   else
-    puts "MODE: multiple pictures"
+
     # multiple pictures
+    #TODO Prepare the sending of an animated image
+    puts "MODE: multiple pictures"
+    sys_fatal(
+        "Oops...",
+        "You can't send animated pictures yet.\nI'm sorry.",
+        ["I won't punish you"]
+    )
+
   end
   Dir.chdir("..")
 }

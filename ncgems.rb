@@ -2,6 +2,7 @@ begin
   require 'rubygems'
   require 'bundler/setup'
   require 'mkmf'
+  require 'open3'
   needed_bins = %w[convert pnminvert tail dd nc]
   bins_exist = Array.new
   needed_bins.each{|bin|find_executable(bin).nil?&&bins_exist.push(bin)}
